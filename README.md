@@ -5,18 +5,18 @@
 ## Summary
 
 ## Problem
-
+In Web3, there're a good number of people with crypto who want to use crypto as payment, but there are very few merchants who accept crypto as a form of payment.
 ## Solution
-
+We are building a decentralized network of plugins/addons on top of the smart wallet to give both sides the ability to do more with their payment. First off, we can easily onboard the merchant with social login with Google. Secondly, some of our addons make it easier to pay such as our Bluetooth payment.
 ### Architecture
 
 ## User Flow
 
-1. 
-2. 
-3. 
-4. 
-5. 
+1.
+2.
+3.
+4.
+5.
 
 ## Future Work
 
