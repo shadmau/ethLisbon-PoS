@@ -1,0 +1,35 @@
+$font-inter: "Inter";
+
+.header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  .normal_text {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 135%;
+    /* or 24px */
+
+    letter-spacing: 0.3px;
+
+    /* Greyscale / Grey 900 */
+
+    color: #111827;
+  }
+
+  .view_all {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+
+    padding-top: 4px;
+    color: #6b7280;
+  }
+}
+
+.space_16px {
+  padding: 8px 0;
+}

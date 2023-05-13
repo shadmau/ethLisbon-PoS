@@ -50,3 +50,20 @@ $font-inter: "Inter";
 
   color: #9ca3af;
 }
+
+.rounded {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.doller {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 40px;
+  line-height: 48px;
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+}
