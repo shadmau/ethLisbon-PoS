@@ -33,33 +33,40 @@ Some thoughts for how the whole project can be built out further:
 
 ## Deployed contract
 
-### Goerli
+### Goerli (chainID: 5)
 
-| contract |                           contract address |
+| Contract |                           Contract address |
 | :------- | -----------------------------------------: |
-| Voting   | 0x2A1b3760d3AEcC8E6b8965404409596084664441 |
-| OFT      | 0xBcA9C6f43F2AE64682E92a8404732cC4C26c52FB |
+| Nike NFT    | 0x5b21d9f94e5f0627683f5e0d63bc5d69848b5dd3 |
+| Safe module | 0x6499fe8dcf7fa706075554a22d54ab007c5c166f |
 
-### Gnosis Chain
+### Gnosis Chain mainnet (chainID: 100)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x7268d5bc5AD0d3E0f333a481a306108A766b0A8C |
-| OFT         | 0xDd14C00Aa47b585c06d48F8FaCB6EaB9a20aCdDc |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
 
-### Polygon
+### Polygon Mumbai (chainID: 80001)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x26D3Fe47c2948Ff67650dA41AD54cb615504F310 |
-| OFT         | 0xB9207fFEf813A97394a814098f37a11B9523D7Ae |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
 
-### Optimism
+### Optimism Goerli testnet (chainID: 420)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x79b71573F5c73D89C767717D98693FDd7d6C942B |
-| OFT         | 0x88650b018f0F0981d8C136B25d7e12F1e2ffd264 |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+
+### Scroll Alpha testnet (chainID: 534353)
+
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+| Safe module | 0x217b0580e5ceeef9e5966825ed523717ea779b5d |
 
 ## Transactions
 
