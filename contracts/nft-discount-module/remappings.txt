@@ -1,0 +1,4 @@
+@openzeppelin/=lib/openzeppelin-contracts/
+@zodiac/=lib/zodiac/contracts/
+@gnosis.pm/safe-contracts/=lib/safe-contracts
+forge-std=lib/forge-std

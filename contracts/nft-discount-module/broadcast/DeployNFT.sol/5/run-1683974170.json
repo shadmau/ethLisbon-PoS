@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "hash": "0x9b506bca37ff0256a7fe8459285979ffd1347637f5c7225c869f72376d979c0a",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x86E192Bd7a223a39a251c42BC7C9ec000F7086Cd",
+      "function": null,
+      "arguments": null,
+      "rpc": "https://eth-goerli.g.alchemy.com/v2/1M1BRjOvJuHPZsKKY0_wwBCadNswgNti",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xd9cdfbbb0dca90f1367673337f441ecf09172b7b",
+        "to": "0x86e192bd7a223a39a251c42bc7c9ec000f7086cd",
+        "gas": "0x3e2ea",
+        "value": "0x0",
+        "data": "0xeacabe14000000000000000000000000d9cdfbbb0dca90f1367673337f441ecf09172b7b0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000004a68747470733a2f2f6166312d6c6f6f6b626f6f6b2e7274666b742e636f6d2f6173736574732f696d616765732f646e612f67656e657369732f6170706172656c2f6166315f312e6a706700000000000000000000000000000000000000000000",
+        "nonce": "0x24",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x9b506bca37ff0256a7fe8459285979ffd1347637f5c7225c869f72376d979c0a"
+  ],
+  "path": "/home/madu/development/ethLisbon-PoS/contracts/nft-discount-module/broadcast/DeployNFT.sol/5/run-latest.json",
+  "returns": {},
+  "timestamp": 1683974170,
+  "chain": 5,
+  "multi": false,
+  "commit": "e5c91f1"
+}
