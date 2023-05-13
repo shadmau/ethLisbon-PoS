@@ -4,10 +4,11 @@ import { SafeEventEmitterProvider } from "@web3auth/base"
 
 interface WalletContextData {
     accounts?: any
+    privateKey?: any
+    chainId?: any
     provider: SafeEventEmitterProvider | null
     login: () => Promise<void>
     logout: () => Promise<void>
-    getAccounts: () => Promise<any>
 }
 
 interface WalletContextProps {
@@ -24,12 +25,20 @@ export function WalletProvider({ children }: WalletContextProps) {
         logout,
         provider,
         getAccounts,
+        getPrivateKey,
+        getChainId,
       } = useWeb3Auth(clientId)
       const [accounts, setAccounts] = useState<any>()
+      const [privateKey, setPrivateKey] = useState<any>()
+      const [chainId, setChainId] = useState<any>()
 
       async function updateData () {
         const getAccountsData = await getAccounts()
+        const getPrivateKeyData = await getPrivateKey()
+        const getChainIdData = await getChainId()
         setAccounts(getAccountsData)
+        setPrivateKey(getPrivateKeyData)
+        setChainId(getChainIdData)
       }
 
       useEffect(() => {
@@ -37,7 +46,7 @@ export function WalletProvider({ children }: WalletContextProps) {
       }, [provider])
 
     return (
-        <WalletContext.Provider value={{ login, logout, provider, getAccounts, accounts }}>
+        <WalletContext.Provider value={{ login, logout, provider, accounts, privateKey, chainId }}>
             {children}
         </WalletContext.Provider>
     )

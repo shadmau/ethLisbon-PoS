@@ -8,7 +8,7 @@ import { WalletContext } from './context/Wallet';
 
 function App() {
 
-  const { provider, login, logout } = useContext(WalletContext)
+  const { provider, login } = useContext(WalletContext)
 
   const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <HomePage handleLogout={logout} />,
+          element: <HomePage />,
         },
       ],
     },
