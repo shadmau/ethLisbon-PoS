@@ -8,7 +8,7 @@ contract DeployerScript is Script {
     function setUp() public {}
 
     function run() public {
-        address nft = 0x86E192Bd7a223a39a251c42BC7C9ec000F7086Cd;
+        address nft = 0x0957b85B61B0824a859Dd44FCBb3153FE6669371;
         address discuntReceiver = address(0x5CFE9e2386150C655F1941DDe8978f862336A858);
         uint discountPercentage = 10;
         uint maxDiscountPerTx = 0.1 ether;
