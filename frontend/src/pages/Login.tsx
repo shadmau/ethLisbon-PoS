@@ -6,12 +6,12 @@ interface LoginPageProps {
     handleLogin: () => Promise<void>
 }
 
-export function LoginPage ({ handleLogin }: LoginPageProps) {
+export function LoginPage({ handleLogin }: LoginPageProps) {
 
 
     return (
-      <button onClick={handleLogin} className="card">
-        Login
-    </button>
+        <button onClick={handleLogin} className="card">
+            Login
+        </button>
     )
 }

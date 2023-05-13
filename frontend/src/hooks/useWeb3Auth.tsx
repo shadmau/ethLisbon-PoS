@@ -1,13 +1,14 @@
-import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
 import { Web3AuthOptions } from "@web3auth/modal";
 import { useEffect, useState } from "react";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import { SafeAuthKit, Web3AuthModalPack, SafeAuthSignInData } from "@safe-global/auth-kit";
+import { SafeAuthKit, Web3AuthModalPack, SafeAuthSignInData, Web3AuthEventListener } from "@safe-global/auth-kit";
+import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider, WALLET_ADAPTERS } from '@web3auth/base';
+import RPC from "../web3RPC";
+
+const connectedHandler: Web3AuthEventListener = (data) => console.log('CONNECTED', data)
+const disconnectedHandler: Web3AuthEventListener = (data) => console.log('DISCONNECTED', data)
 
 export function useWeb3Auth(clientId: string) {
-    // const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
-    // const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null);
-
     const [safeAuthSignInResponse, setSafeAuthSignInResponse] = useState<SafeAuthSignInData | null>(
         null
     )
@@ -32,18 +33,19 @@ export function useWeb3Auth(clientId: string) {
                     }
                 }
 
+
                 // https://web3auth.io/docs/sdk/web/modal/initialize#configuring-adapters
-                //   const modalConfig = {
-                //     [WALLET_ADAPTERS.TORUS_EVM]: {
-                //       label: 'torus',
-                //       showOnModal: false
-                //     },
-                //     [WALLET_ADAPTERS.METAMASK]: {
-                //       label: 'metamask',
-                //       showOnDesktop: true,
-                //       showOnMobile: false
-                //     }
-                //   }
+                const modalConfig = {
+                    [WALLET_ADAPTERS.TORUS_EVM]: {
+                        label: 'torus',
+                        showOnModal: false
+                    },
+                    [WALLET_ADAPTERS.METAMASK]: {
+                        label: 'metamask',
+                        showOnDesktop: true,
+                        showOnMobile: false
+                    }
+                }
 
                 const openloginAdapter = new OpenloginAdapter({
                     loginSettings: {
@@ -57,11 +59,15 @@ export function useWeb3Auth(clientId: string) {
                     }
                 })
 
-                const pack = new Web3AuthModalPack(options, [openloginAdapter], {})
+                const pack = new Web3AuthModalPack(options, [openloginAdapter], modalConfig)
 
                 const safeAuthKit = await SafeAuthKit.init(pack, {
                     txServiceUrl: 'https://safe-transaction-goerli.safe.global'
                 })
+
+                safeAuthKit.subscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
+
+                safeAuthKit.subscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
 
                 setSafeAuth(safeAuthKit)
 
@@ -71,6 +77,13 @@ export function useWeb3Auth(clientId: string) {
         };
 
         init();
+
+        return () => {
+            if (safeAuth) {
+                safeAuth.unsubscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler)
+                safeAuth.unsubscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler)
+            }
+        }
     }, []);
 
     const login = async () => {
@@ -87,17 +100,47 @@ export function useWeb3Auth(clientId: string) {
 
     const logout = async () => {
         if (!safeAuth) return
-    
+
         await safeAuth.signOut()
-    
+
         setProvider(null)
         setSafeAuthSignInResponse(null)
-      }
+    }
+
+    const getChainId = async () => {
+        if (!provider) {
+            return;
+        }
+        const rpc = new RPC(provider);
+        const chainId = await rpc.getChainId();
+        return chainId
+    };
+
+    const getAccounts = async () => {
+        if (!provider) {
+            return;
+        }
+        const rpc = new RPC(provider);
+        const address = await rpc.getAccounts();
+        return address
+    };
+
+    const getPrivateKey = async () => {
+        if (!provider) {
+            return;
+        }
+        const rpc = new RPC(provider);
+        const privateKey = await rpc.getPrivateKey();
+        return privateKey
+    };
 
     return {
         login,
         logout,
         safeAuthSignInResponse,
         provider,
+        getChainId,
+        getPrivateKey,
+        getAccounts,
     }
 }

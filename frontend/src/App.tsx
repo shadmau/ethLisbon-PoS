@@ -12,10 +12,15 @@ function App() {
     login,
     logout,
     safeAuthSignInResponse,
-    provider
+    provider,
+    getPrivateKey,
   } = useWeb3Auth(clientId)
 
-  function renderAuthenticatedFlow() {
+ 
+
+  async function renderAuthenticatedFlow() {
+    const privateKey = await getPrivateKey()
+    console.log('private key', privateKey)
     console.log(safeAuthSignInResponse)
     return <Layout>
       <HomePage
