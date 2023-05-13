@@ -1,8 +1,10 @@
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css'
 import { Layout } from './Layout';
 import { useWeb3Auth } from './hooks/useWeb3Auth';
-import { HomePage } from './pages/Home';
 import { LoginPage } from './pages/Login';
+import { Home } from '@mui/icons-material';
+import { HomePage } from './pages/Home';
 
 const clientId = import.meta.env.VITE_REACT_APP_WEB3_AUTH_CLIENT_ID
 
@@ -11,22 +13,25 @@ function App() {
   const {
     login,
     logout,
-    safeAuthSignInResponse,
     provider,
-    getPrivateKey,
   } = useWeb3Auth(clientId)
 
- 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage handleLogout={logout} />,
+        },
+      ],
+    },
+  ]);
 
-  async function renderAuthenticatedFlow() {
-    const privateKey = await getPrivateKey()
-    console.log('private key', privateKey)
-    console.log(safeAuthSignInResponse)
-    return <Layout>
-      <HomePage
-        handleLogout={logout}
-      />
-    </Layout >
+
+  function renderAuthenticatedFlow() {
+    return (<RouterProvider router={router} />)
   }
 
   if (provider) {

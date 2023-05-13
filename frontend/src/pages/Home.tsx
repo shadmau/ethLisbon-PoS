@@ -3,12 +3,13 @@ import styles from './Home.module.scss'
 import { Typography } from '@mui/material'
 
 interface HomePageProps {
-    handleLogout: () => Promise<void>
+    handleLogout?: () => Promise<void>
 }
 
-export function HomePage({ handleLogout }: HomePageProps) {
-    const loggedInView = (
-        <>
+export function HomePage({ handleLogout, ...props }: HomePageProps) {
+    return (
+        <div className={styles.container}>
+            <Typography variant='h3' component='h1'>User.name</Typography>
             <div className="flex-container">
                 <div>
                     <button onClick={handleLogout} className="card">
@@ -20,13 +21,6 @@ export function HomePage({ handleLogout }: HomePageProps) {
             <div id="console" style={{ whiteSpace: "pre-line" }}>
                 <p style={{ whiteSpace: "pre-line" }}>Logged in Successfully!</p>
             </div>
-        </>
-    );
-
-    return (
-        <div className={styles.container}>
-            <Typography variant='h3' component='h1'>User.name</Typography>
-            {loggedInView}
         </div>
     )
 }
