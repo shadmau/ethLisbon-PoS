@@ -1,0 +1,52 @@
+$font-inter: "Inter";
+
+.normal_text {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+
+  letter-spacing: 0.3px;
+  color: #111827;
+  text-align: left;
+}
+
+.amount_text {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+}
+
+.username_text {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+}
+
+.address_text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  /* identical to box height, or 20px */
+
+  /* Greyscale / Grey 400 */
+
+  color: #9ca3af;
+}
