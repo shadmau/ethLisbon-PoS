@@ -1,6 +1,12 @@
+.view {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .container {
     width: 100vw;
-    height: 86vh;
+    height: 90vh;
     align-self: flex-start;
     margin: 0 0 0 0;
 }

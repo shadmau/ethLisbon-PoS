@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export function Layout({ children, ...props }: LayoutProps) {
     return (
-        <div {...props}>
+        <div className={styles.view} {...props}>
             <main className={styles.container}>
                 {children}
             </main>
