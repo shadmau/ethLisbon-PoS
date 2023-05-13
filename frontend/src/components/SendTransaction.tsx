@@ -4,9 +4,17 @@ import Safe, {
   EthersAdapter,
   SafeFactory,
   SafeAccountConfig,
+  getSafeContract,
 } from "@safe-global/protocol-kit";
-import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
+import {
+  MetaTransactionData,
+  MetaTransactionOptions,
+  OperationType,
+  RelayTransaction,
+  SafeTransactionDataPartial,
+} from "@safe-global/safe-core-sdk-types";
 import { ethers } from "ethers";
+import { GelatoRelayPack } from "@safe-global/relay-kit";
 
 const provider = new ethers.providers.JsonRpcProvider(
   "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
@@ -96,6 +104,64 @@ function SendTransaction() {
     if (receipt) {
       console.log(`https://goerli.etherscan.io/tx/${receipt.transactionHash}`);
     }
+  };
+
+  const requestRelay = async () => {
+    const safeAddress = "0x676bDe3B3c48E33E2f57Dc8111e73Da117a9837f";
+    const destinationAddress = "";
+    const chainId = 5;
+    // Create a transaction object
+    const safeTransactionData: MetaTransactionData = {
+      to: destinationAddress,
+      data: "0x", // leave blank for native token transfers
+      value: ethers.utils.parseUnits("0.001", "ether").toString(),
+      operation: OperationType.Call,
+    };
+    const options: MetaTransactionOptions = {
+      gasLimit: "100000",
+      isSponsored: true,
+    };
+    const safeSDK = await Safe.create({
+      ethAdapter,
+      safeAddress,
+    });
+
+    const relayKit = new GelatoRelayPack(process.env.GELATO_RELAY_API_KEY!);
+
+    const safeTransaction = await safeSDK.createTransaction({
+      safeTransactionData,
+    });
+
+    const signedSafeTx = await safeSDK.signTransaction(safeTransaction);
+    const safeSingletonContract = await getSafeContract({
+      ethAdapter,
+      safeVersion: await safeSDK.getContractVersion(),
+    });
+
+    const encodedTx = safeSingletonContract.encode("execTransaction", [
+      signedSafeTx.data.to,
+      signedSafeTx.data.value,
+      signedSafeTx.data.data,
+      signedSafeTx.data.operation,
+      signedSafeTx.data.safeTxGas,
+      signedSafeTx.data.baseGas,
+      signedSafeTx.data.gasPrice,
+      signedSafeTx.data.gasToken,
+      signedSafeTx.data.refundReceiver,
+      signedSafeTx.encodedSignatures(),
+    ]);
+
+    const relayTransaction: RelayTransaction = {
+      target: safeAddress,
+      encodedTransaction: encodedTx,
+      chainId,
+      options,
+    };
+    const response = await relayKit.relayTransaction(relayTransaction);
+
+    console.log(
+      `Relay Transaction Task ID: https://relay.gelato.digital/tasks/status/${response.taskId}`
+    );
   };
   return (
     <>
