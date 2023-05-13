@@ -1,0 +1,3 @@
+[submodule "contracts/nft-discount-module/lib/forge-std"]
+	path = contracts/nft-discount-module/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
