@@ -27,11 +27,14 @@ const owner3 = new ethers.Wallet(
   "c4464e31fbd3ebba87f07a9df614d6e911d9641f816c91f16d751f096fa1cdc1",
   provider
 );
+console.log("owner1: ", owner1);
 
 const ethAdapter = new EthersAdapter({
   ethers,
   signerOrProvider: owner1,
 });
+
+console.log("ethAdapter: ", ethAdapter);
 
 function SendTransaction() {
   const deploySafe = async () => {
@@ -61,13 +64,20 @@ function SendTransaction() {
   };
 
   const sendTransaction = async () => {
+    console.log(await owner1.getAddress());
+    // const safeSdk = await Safe.create({
+    //   ethAdapter,
+    //   safeAddress: "0x3c517ed4047d0752ef5ef64e033ba9f7c8e52384",
+    // });
+
     const safeSdk = await Safe.create({
       ethAdapter,
-      safeAddress: "0x3c517ed4047d0752ef5ef64e033ba9f7c8e52384",
+      safeAddress: "0x676bDe3B3c48E33E2f57Dc8111e73Da117a9837f",
     });
+
     const safeTransactionData: SafeTransactionDataPartial = {
-      to: "0xCbb2e4C196DCceAF637481706d44DA09EAf6805b",
-      value: ethers.utils.parseUnits("0.005", "ether").toString(),
+      to: "0x5CFE9e2386150C655F1941DDe8978f862336A858",
+      value: ethers.utils.parseUnits("0.001", "ether").toString(),
       data: "0x",
     };
     const safeTransaction = await safeSdk.createTransaction({
@@ -77,6 +87,9 @@ function SendTransaction() {
     await safeSdk.signTransaction(safeTransaction);
 
     const executeTxResponse = await safeSdk.executeTransaction(safeTransaction);
+
+    console.log("executeTxResponse: ", executeTxResponse);
+
     const receipt = await executeTxResponse.transactionResponse?.wait();
 
     console.log("Transaction executed:");
