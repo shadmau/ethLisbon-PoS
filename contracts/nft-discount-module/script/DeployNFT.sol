@@ -11,7 +11,7 @@ contract DeployerScriptNFT is Script {
     function run() public {
         uint256 deployerPrivKey = vm.envUint("DEPLOYER_PRIV_KEY");
         vm.broadcast(deployerPrivKey);
-      //  UndeadNFT undead = new UndeadNFT();
+        UndeadNFT undead = new UndeadNFT();
       
        /*
         UndeadNFT undead = UndeadNFT(0x86E192Bd7a223a39a251c42BC7C9ec000F7086Cd);
