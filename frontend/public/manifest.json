@@ -1,0 +1,21 @@
+{
+    "name": "EthLisbon POS",
+    "short_name": "EthPos",
+    "description": "EthLisbon Point of Sale App",
+    "icons": [
+      {
+        "src": "icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1c1c1c"
+  }
