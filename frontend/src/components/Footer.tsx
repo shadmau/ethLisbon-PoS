@@ -14,7 +14,7 @@ export function Footer() {
   const navigationRoutes = ["/", "/activity", "/my-wallets", "/profile"];
 
   function handleClickQRCode() {
-    navigate("/scan");
+    navigate("/scanner");
   }
 
   return (

@@ -1,0 +1,44 @@
+.address {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  /* Greyscale / Grey 400 */
+
+  color: #9ca3af;
+
+  text-align: center;
+}
+
+.info {
+  .amount {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 150%;
+    /* identical to box height, or 48px */
+
+    /* Greyscale / Grey 900 */
+
+    color: #111827;
+    text-align: center;
+  }
+
+  .amount_doller {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    /* identical to box height, or 27px */
+
+    /* Greyscale / Grey 500 */
+
+    color: #6b7280;
+    text-align: center;
+  }
+}
