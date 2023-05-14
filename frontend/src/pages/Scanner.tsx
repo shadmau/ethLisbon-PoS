@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Scanner.module.scss";
 import { Html5Qrcode, Html5QrcodeScanType } from "html5-qrcode";
+import { useNavigate } from "react-router-dom";
 
 const qrcodeRegionId = "html5qr-code-full-region";
 
 export function Scanner() {
   const [scanner, setScanner] = useState<Html5Qrcode>();
-  const [scaned, setScaned] = useState(false);
-
+  const navigate = useNavigate();
   const onScanError = (error: any) => {
     console.log("App [error]", error);
   };
@@ -27,8 +27,7 @@ export function Scanner() {
         console.log("App [result]", decodedResult);
         html5QrCode.stop();
         setScanner(undefined);
-        setScaned(true);
-        //TODD: navigate to payment confirm page
+        navigate("/payment");
       },
       onScanError
     );
@@ -36,30 +35,9 @@ export function Scanner() {
     setScanner(html5QrCode);
   };
 
-  const stopScanner = () => {
-    if (scanner) {
-      scanner
-        .stop()
-        .then(() => {
-          setScanner(undefined);
-        })
-        .catch((err: any) => {
-          console.log("App [error]", err);
-        });
-    }
-  };
+  useEffect(() => {
+    handleScan();
+  }, []);
 
-  return (
-    <div>
-      <div>
-        <button onClick={() => handleScan()}>Scan QR Code</button>
-        <div id={qrcodeRegionId} />
-        {scanner !== undefined ? (
-          <button onClick={() => stopScanner()}>Stop Scanner</button>
-        ) : (
-          <div></div>
-        )}
-      </div>
-    </div>
-  );
+  return <div id={qrcodeRegionId} />;
 }

@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket_title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 135%;
+  /* or 32px */
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+
+  text-align: center;
+}
+
+.ticket_subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Neutral / Gray 4 */
+
+  color: #8f92a1;
+  text-align: center;
+}
+
+.amount {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 150%;
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+  text-align: center;
+}
+
+.amount_doller {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  /* identical to box height, or 27px */
+
+  /* Greyscale / Grey 500 */
+
+  color: #6b7280;
+  text-align: center;
+}

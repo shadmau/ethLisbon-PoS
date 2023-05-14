@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styles from "./PopupLayout.module.scss";
 import { Header } from "./Header/Header";
-import { Footer } from "./Footer/Footer";
+import { Footer } from "./Footer";
 
 interface LayoutProps {
   children: ReactNode;

@@ -12,18 +12,31 @@ interface Props {
 export function CreateInvoice(props: Props) {
   return (
     <div>
-      <p>Create Invoice</p>
+      <p className={styles.title}>Create Invoice</p>
       <TextField
         id="outlined-basic"
         label="Product description"
         variant="outlined"
+        fullWidth
+        placeholder="Product name"
       />
-      <TextField id="outlined-basic" label="Product price" variant="outlined" />
+      <div className="space_16px"></div>
+      <TextField
+        id="outlined-basic"
+        label="Product price"
+        variant="outlined"
+        fullWidth
+        placeholder="$100"
+      />
+      <div className="space_16px"></div>
+
       <TextField
         id="outlined-basic"
         label="Amount charged"
         variant="outlined"
+        fullWidth
       />
+      <div className="space_16px"></div>
 
       <div className={styles.info}>
         <InfoIcon
@@ -46,6 +59,7 @@ export function CreateInvoice(props: Props) {
         color={"#111827"}
         onClick={props.onClickConfirm}
       />
+      <div className="space_16px"></div>
 
       <WideButton
         text={"Cancel"}

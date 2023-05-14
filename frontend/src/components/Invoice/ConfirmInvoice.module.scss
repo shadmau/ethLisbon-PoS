@@ -1,0 +1,20 @@
+.title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 150%;
+  /* identical to box height, or 36px */
+
+  align-items: center;
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
