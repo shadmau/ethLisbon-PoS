@@ -4,6 +4,7 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { SafeAuthKit, Web3AuthModalPack, SafeAuthSignInData, Web3AuthEventListener } from "@safe-global/auth-kit";
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider, WALLET_ADAPTERS } from '@web3auth/base';
 import RPC from "../web3RPC";
+import { DEFAULT_CHAIN, chainsList } from "../utils/chains"
 
 const connectedHandler: Web3AuthEventListener = (data) => console.log('CONNECTED', data)
 const disconnectedHandler: Web3AuthEventListener = (data) => console.log('DISCONNECTED', data)
@@ -23,9 +24,7 @@ export function useWeb3Auth(clientId: string) {
                     web3AuthNetwork: 'testnet',
                     chainConfig: {
                         chainNamespace: CHAIN_NAMESPACES.EIP155,
-                        chainId: '0x5',
-                        // https://chainlist.org/
-                        rpcTarget: `https://rpc.ankr.com/eth_goerli`
+                        ...DEFAULT_CHAIN
                     },
                     uiConfig: {
                         theme: 'dark',

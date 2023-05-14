@@ -5,7 +5,7 @@ import { WalletContext } from '../context/Wallet'
 
 export function HomePage({ ...props }) {
 
-    const { accounts, logout } = useContext(WalletContext)
+    const { accounts, logout, isMerchant } = useContext(WalletContext)
 
     console.log('accounts ', accounts)
 
