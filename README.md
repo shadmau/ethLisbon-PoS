@@ -3,6 +3,7 @@
 # WingWallet
 
 ## Summary
+Introducing our smart wallet - the ultimate solution for seamless crypto transactions! With our point-of-sale crypto payment app, users can easily make purchases using their crypto wallet. Plus, our customizable addons allow for extended capabilities such as posting transactions to Lenster and merchants converting received tokens. All designed with Safe Core SDK and Web3Auth for top-notch user experience.
 
 ## Problem
 In Web3, there are already a big number of people with crypto who want to use crypto as payment, but there are very few merchants who accept crypto as a form of payment.
@@ -11,7 +12,7 @@ We are building a decentralized network of plugins/addons to extend capabilities
 
 
 ### Buyer and merchant flows
-
+![Buyer and merchant flows](https://drive.google.com/file/d/1Kdr0LNGVAFPrwmeipG-D_4qcpVk0kH-8/view?usp=share_link)
 
 ## User Flow
 The user has an existing wallet and would connect their external wallet with the app to pre-load it with crypto. The seller (merchant) doesn't have a Web3 wallet yet, so he/she would create a wallet through Web3 login. The wallet (EOA) that is created with social login would in turn create the safe. This safe would then help to conduct transactions with the buyer from seller.
@@ -32,7 +33,6 @@ Some thoughts for how the whole project can be built out further:
 - To create a fully decentralized L2 network of addons.
 
 ## Deployed contract
-
 ### Goerli (chainID: 5)
 
 | Contract |                           Contract address |
@@ -94,17 +94,13 @@ https://explorer.goerli.linea.build/address/0x80Aa447D916aa168F8656196fa0Bb2b2B8
 The verified smart contract for Mantle testnet is:
 https://explorer.testnet.mantle.xyz/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
 
-## Transactions
-
-Hyperlane: https://explorer.hyperlane.xyz/message/113809
-
 ## Others
 
 ### Demo movie
-https://www.youtube.com/watch?v=pDM4ci3XoFk&feature=youtu.be
+
 
 ### Demo site
-https://cross-chain-voting-frontend.vercel.app
+
 
 ### How to run locally
 1. Go to the frontend folder
