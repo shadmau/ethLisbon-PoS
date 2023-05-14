@@ -11,6 +11,8 @@ import { SuccessTransactionForUser } from "./pages/SuccessTransactionForUser";
 import { SuccessTransactionForMerchant } from "./pages/SuccessTransactionForMerchant";
 import { Invoice } from "./pages/Invoice";
 import { WelcomePage } from "./pages/Welcome";
+import { AddOn } from "./pages/AddOn";
+import { AddOnDetail } from "./pages/AddOnDetail";
 
 function App() {
   const { provider } = useContext(WalletContext);
@@ -23,6 +25,14 @@ function App() {
         {
           path: "/",
           element: <HomePage />,
+        },
+        {
+          path: "/addon",
+          element: <AddOn />,
+        },
+        {
+          path: "/addon/detail",
+          element: <AddOnDetail />,
         },
         {
           path: "/scanner",

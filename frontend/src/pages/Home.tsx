@@ -1,28 +1,34 @@
-import React, { useContext } from 'react'
-import styles from './Home.module.scss'
-import { Typography } from '@mui/material'
-import { WalletContext } from '../context/Wallet'
+import React, { useContext, useEffect, useState } from "react";
+import styles from "./Home.module.scss";
+import { Typography } from "@mui/material";
+import { WalletContext } from "../context/Wallet";
+import { PopupLayout } from "../components/PopupLayout";
+import Ethereum from "../assets/ethereum-logo.png";
 
 export function HomePage({ ...props }) {
+  const [address, setAddress] = useState("");
+  const { accounts, logout, isMerchant } = useContext(WalletContext);
+  useEffect(() => {
+    if (accounts) {
+      setAddress(accounts.address);
+      console.log("address ", address);
+    }
+  }, [accounts]);
 
-    const { accounts, logout, isMerchant } = useContext(WalletContext)
-
-    console.log('accounts ', accounts)
-
-    return (
-        <div className={styles.container} {...props}>
-            <Typography variant='h3' component='h1'>User.name</Typography>
-            <div className="flex-container">
-                <div>
-                    <button onClick={logout} className="card">
-                        Log Out
-                    </button>
-                </div>
-            </div>
-
-            <div id="console" style={{ whiteSpace: "pre-line" }}>
-                <p style={{ whiteSpace: "pre-line" }}>Logged in Successfully!</p>
-            </div>
+  return (
+    <PopupLayout title="Account">
+      <div className={styles.container} {...props}>
+        <div className="space_32px"></div>
+        <Typography variant="h4" component="h1">
+          nike_lisbon@nike.com
+        </Typography>
+        <p className={styles.address}>0xabcd........xyz</p>
+        <div className={styles.info}>
+          <img src={Ethereum} height={65} width={50} />
+          <p className={styles.amount}>0 ETH</p>
+          <p className={styles.amount_doller}>$0.00 USD</p>
         </div>
-    )
+      </div>
+    </PopupLayout>
+  );
 }

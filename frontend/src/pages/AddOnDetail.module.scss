@@ -21,36 +21,22 @@ $font-inter: "Inter";
   }
 }
 
-.title {
-  padding: 1rem;
+.status {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  /* Greyscale / Grey 400 */
+
+  color: #9ca3af;
+}
+
+.currency {
   display: flex;
-  justify-content: space-between;
-  .normal_text {
-    font-family: $font-inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    /* identical to box height, or 24px */
-
-    display: flex;
-    align-items: center;
-    text-align: right;
-
-    /* Greyscale / Grey 900 */
-
-    color: #111827;
-  }
-
-  .view_all {
-    font-family: $font-inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-
-    padding-top: 4px;
-    color: #6b7280;
-  }
+  flex-direction: column;
 }
 
 .main_text {
@@ -100,4 +86,19 @@ $font-inter: "Inter";
 
     color: #111827;
   }
+}
+
+.title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 150%;
+  /* identical to box height, or 36px */
+
+  align-items: center;
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
 }
