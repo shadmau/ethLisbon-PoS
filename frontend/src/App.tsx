@@ -1,15 +1,15 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css'
 import { Layout } from './Layout';
-import { LoginPage } from './pages/Login';
 import { HomePage } from './pages/Home';
 import { useContext } from 'react';
 import { WalletContext } from './context/Wallet';
 import { WelcomePage } from './pages/Welcome';
+import { Scanner } from './pages/Scanner';
 
 function App() {
 
-  const { provider, login } = useContext(WalletContext)
+  const { provider } = useContext(WalletContext)
 
   const router = createBrowserRouter([
     {
@@ -19,6 +19,10 @@ function App() {
         {
           path: "/",
           element: <HomePage />,
+        },
+        {
+          path: "/scan",
+          element: <Scanner />,
         },
       ],
     },

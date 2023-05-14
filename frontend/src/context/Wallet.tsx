@@ -9,6 +9,8 @@ interface WalletContextData {
     provider: SafeEventEmitterProvider | null
     login: () => Promise<void>
     logout: () => Promise<void>
+    isMerchant: boolean
+    handleSetUserAsMerchant: () => void
 }
 
 interface WalletContextProps {
@@ -31,6 +33,7 @@ export function WalletProvider({ children }: WalletContextProps) {
       const [accounts, setAccounts] = useState<any>()
       const [privateKey, setPrivateKey] = useState<any>()
       const [chainId, setChainId] = useState<any>()
+      const [isMerchant, setIsMerchant] = useState(false)
 
       async function updateData () {
         const getAccountsData = await getAccounts()
@@ -41,12 +44,16 @@ export function WalletProvider({ children }: WalletContextProps) {
         setChainId(getChainIdData)
       }
 
+      function handleSetUserAsMerchant () {
+        setIsMerchant(true)
+      }
+
       useEffect(() => {
         updateData()
       }, [provider])
 
     return (
-        <WalletContext.Provider value={{ login, logout, provider, accounts, privateKey, chainId }}>
+        <WalletContext.Provider value={{ login, logout, provider, accounts, privateKey, chainId, isMerchant, handleSetUserAsMerchant }}>
             {children}
         </WalletContext.Provider>
     )
