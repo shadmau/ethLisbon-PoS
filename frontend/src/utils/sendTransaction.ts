@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import { DEFAULT_CHAIN } from "./chains";
 
 export const sendTransaction = async (privKey: string, safeAddress: string) => {
+    console.log(1)
     const provider = new ethers.providers.JsonRpcProvider( DEFAULT_CHAIN.rpcTarget)
     const signer = new ethers.Wallet(privKey, provider)
 
@@ -12,9 +13,11 @@ export const sendTransaction = async (privKey: string, safeAddress: string) => {
         signerOrProvider: signer,
     });
 
+    console.log('safe add ', safeAddress)
+
     const safeSdk = await Safe.create({
         ethAdapter,
-        safeAddress,
+        safeAddress: "0x3b6e4a4949F04595FCD97b8A29dee609FE87F397",
     });
 
     const safeTransactionData: SafeTransactionDataPartial = {
