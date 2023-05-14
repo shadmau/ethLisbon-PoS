@@ -5,6 +5,7 @@ import { LoginPage } from './pages/Login';
 import { HomePage } from './pages/Home';
 import { useContext } from 'react';
 import { WalletContext } from './context/Wallet';
+import { WelcomePage } from './pages/Welcome';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
     return renderAuthenticatedFlow()
   }
 
-  return <LoginPage handleLogin={login} />
+  return <WelcomePage />
 }
 
 export default App;
