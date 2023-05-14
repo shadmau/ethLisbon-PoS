@@ -16,7 +16,7 @@ export function CreateQRCode() {
 
   useEffect(() => {
     const data = {
-      address: "0xDc2543d90a20C306cb74714F2A36C7BD8Fa1444b",
+      address: "0xA2fF2Bda6b93309d43901c220C02Dfe8105a9f7B",
       amount: ethers.utils.parseUnits("0.001", "ether").toString(),
     };
     setQrCodeData(JSON.stringify(data));
@@ -32,7 +32,7 @@ export function CreateQRCode() {
         Create QR Code
       </button> */}
       {qrCodeData != "" && (
-        <div className="space_32px">
+        <div className="space_32px" style={{ background: "white" }}>
           ©
           <QRCode
             size={256}
