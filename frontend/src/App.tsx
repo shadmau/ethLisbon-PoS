@@ -1,8 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./Layout";
-import { LoginPage } from "./pages/Login";
-import { HomePage } from "./pages/Home";
 import { useContext } from "react";
 import { WalletContext } from "./context/Wallet";
 import { Scanner } from "./pages/Scanner";
@@ -14,6 +12,7 @@ import { WelcomePage } from "./pages/Welcome";
 import { AddOn } from "./pages/AddOn";
 import { AddOnDetail } from "./pages/AddOnDetail";
 import { CreateQRCode } from "./pages/CreateQRCode";
+import { HomePage } from "./pages/Home";
 
 function App() {
   const { provider } = useContext(WalletContext);

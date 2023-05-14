@@ -22,7 +22,7 @@ export function useWeb3Auth(clientId: string) {
             try {
                 const options: Web3AuthOptions = {
                     clientId,
-                    web3AuthNetwork: 'testnet',
+                    web3AuthNetwork: 'mainnet',
                     chainConfig: {
                         chainNamespace: CHAIN_NAMESPACES.EIP155,
                         ...DEFAULT_CHAIN

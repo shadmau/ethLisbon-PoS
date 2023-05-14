@@ -3,9 +3,14 @@ import { Box, Button, Typography } from "@mui/material";
 import { WalletContext } from "../context/Wallet";
 
 export function WelcomePage() {
-  const { login } = useContext(WalletContext);
+  const { login, handleSetUserAsMerchant } = useContext(WalletContext);
 
   function handleStart() {
+    login();
+  }
+
+  function handleStartAsMerchant() {
+    handleSetUserAsMerchant();
     login();
   }
 
@@ -22,7 +27,7 @@ export function WelcomePage() {
       <Box
         sx={{
           width: "86vw",
-          height: "90vh",
+          height: "84vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "end",
@@ -35,8 +40,11 @@ export function WelcomePage() {
           Quick supportive description
         </Typography>
       </Box>
-      <Button fullWidth variant="contained" onClick={handleStart}>
+      <Button sx={{ margin: '1rem' }} fullWidth variant="contained" onClick={handleStart}>
         Start here
+      </Button>
+      <Button fullWidth variant="outlined" color="info" onClick={handleStartAsMerchant}>
+        Start here as a Merchant
       </Button>
     </Box>
   );
