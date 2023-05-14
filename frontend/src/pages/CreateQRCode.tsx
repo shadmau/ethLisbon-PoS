@@ -32,12 +32,15 @@ export function CreateQRCode() {
         Create QR Code
       </button> */}
       {qrCodeData != "" && (
-        <QRCode
-          size={256}
-          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-          value={qrCodeData}
-          viewBox={`0 0 256 256`}
-        />
+        <div className="space_32px">
+          ©
+          <QRCode
+            size={256}
+            style={{ height: "auto", maxWidth: "100%", width: "50%" }}
+            value={qrCodeData}
+            viewBox={`0 0 256 256`}
+          />
+        </div>
       )}
     </>
   );

@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import InfoIcon from "@mui/icons-material/Info";
 import Divider from "@mui/material/Divider";
 import { WideButton } from "../WideButton";
+import { useState } from "react";
+import Input from "@mui/material/Input";
 
 interface Props {
   onClickConfirm: () => void;
@@ -10,6 +12,19 @@ interface Props {
 }
 
 export function CreateInvoice(props: Props) {
+  const [price, setPrice] = useState(0);
+  const [ethPrice, setEthPrice] = useState(0);
+
+  const inputPrice = (event: any) => {
+    console.log(event.target.value);
+    if (event.target.value === "NaN1") {
+      setPrice(0);
+      setEthPrice(price * 0.00055);
+    } else {
+      setPrice(parseInt(event.target.value));
+      setEthPrice(parseFloat((price * 0.00055).toString()));
+    }
+  };
   return (
     <div>
       <p className={styles.title}>Create Invoice</p>
@@ -26,7 +41,9 @@ export function CreateInvoice(props: Props) {
         label="Product price"
         variant="outlined"
         fullWidth
-        placeholder="$100"
+        placeholder={"100"}
+        onChange={inputPrice}
+        value={price.toString()}
       />
       <div className="space_16px"></div>
 
@@ -34,6 +51,7 @@ export function CreateInvoice(props: Props) {
         id="outlined-basic"
         label="Amount charged"
         variant="outlined"
+        value={ethPrice.toString()}
         fullWidth
       />
       <div className="space_16px"></div>

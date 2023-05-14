@@ -21,7 +21,7 @@ export function Scanner() {
     };
     const html5QrCode = new Html5Qrcode(qrcodeRegionId);
     html5QrCode.start(
-      { facingMode: "user" },
+      { facingMode: "environment" },
       config,
       (decodedText: string, decodedResult: any) => {
         console.log("App [result]", decodedResult);
