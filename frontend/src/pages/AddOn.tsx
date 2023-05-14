@@ -5,8 +5,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import CameraIcon from "@mui/icons-material/Camera";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Divider from "@mui/material/Divider";
 
 export function AddOn() {
   return (
@@ -18,43 +16,47 @@ export function AddOn() {
         </div>
         <List>
           <ListItem
-            secondaryAction={<KeyboardArrowRightIcon />}
-            sx={{ bgcolor: "#F5F5F5" }}
+            sx={{
+              bgcolor: "#F5F5F5",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
           >
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add-on" />
+            <ListItemText primary="Two-factor authentication" />
+            <ListItemText secondary="By WingWallet" />
           </ListItem>
           <div className={styles.space_16px}></div>
           <ListItem
-            secondaryAction={<KeyboardArrowRightIcon />}
-            sx={{ bgcolor: "#F5F5F5" }}
+            sx={{
+              bgcolor: "#F5F5F5",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
           >
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add-on" />
+            <ListItemText primary="Automatic conversion and staking on AAVE" />
+            <ListItemText secondary="By WingWallet" />
           </ListItem>
           <div className={styles.space_16px}></div>
           <ListItem
-            secondaryAction={<KeyboardArrowRightIcon />}
-            sx={{ bgcolor: "#F5F5F5" }}
+            sx={{
+              bgcolor: "#F5F5F5",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
           >
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add-on" />
+            <ListItemText primary="Push messaging" />
+            <ListItemText secondary="By Push Protocol" />
           </ListItem>
           <div className={styles.space_16px}></div>
           <ListItem
-            secondaryAction={<KeyboardArrowRightIcon />}
-            sx={{ bgcolor: "#F5F5F5" }}
+            sx={{
+              bgcolor: "#F5F5F5",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
           >
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add-on" />
+            <ListItemText primary="Schedule a transaction" />
+            <ListItemText secondary="By WingWallet" />
           </ListItem>
         </List>
 
@@ -69,36 +71,10 @@ export function AddOn() {
               <CameraIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Nike cashback"
-              secondary="Valid until・Aug, 2023"
+              primary="Convert currency"
+              secondary="By Wing Wallet"
             />
-            <span>10%</span>
-          </ListItem>
-
-          <Divider />
-
-          <ListItem>
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Lenster post"
-              secondary="Valid until・Aug, 2023"
-            />
-            <span>Post</span>
-          </ListItem>
-
-          <Divider />
-
-          <ListItem>
-            <ListItemIcon>
-              <CameraIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Sponsored transaction"
-              secondary="Valid until・Aug, 2023"
-            />
-            <span>0 GAS</span>
+            <span>USDC</span>
           </ListItem>
         </List>
       </Container>

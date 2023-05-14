@@ -1,0 +1,47 @@
+.ticket_title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 135%;
+  /* or 32px */
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+
+  text-align: center;
+
+  padding: 0 8px;
+}
+
+.ticket_subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Neutral / Gray 4 */
+
+  color: #8f92a1;
+  text-align: center;
+}
+
+.add_on {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 135%;
+  /* or 24px */
+
+  letter-spacing: 0.3px;
+
+  /* Greyscale / Grey 900 */
+
+  color: #111827;
+}

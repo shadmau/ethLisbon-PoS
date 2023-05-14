@@ -1,155 +1,177 @@
-import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
-import { Web3Auth } from "@web3auth/modal";
-import RPC from "../web3RPC";
+import { Web3AuthOptions } from "@web3auth/modal";
 import { useEffect, useState } from "react";
+import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
+import {
+  SafeAuthKit,
+  Web3AuthModalPack,
+  SafeAuthSignInData,
+  Web3AuthEventListener,
+} from "@safe-global/auth-kit";
+import {
+  ADAPTER_EVENTS,
+  CHAIN_NAMESPACES,
+  SafeEventEmitterProvider,
+  WALLET_ADAPTERS,
+} from "@web3auth/base";
+import RPC from "../web3RPC";
+import { DEFAULT_CHAIN, chainsList } from "../utils/chains";
+import { ethers } from "ethers";
+
+const connectedHandler: Web3AuthEventListener = (data) =>
+  console.log("CONNECTED", data);
+const disconnectedHandler: Web3AuthEventListener = (data) =>
+  console.log("DISCONNECTED", data);
 
 export function useWeb3Auth(clientId: string) {
-    const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
-    const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null);
+  const [safeAuthSignInResponse, setSafeAuthSignInResponse] =
+    useState<SafeAuthSignInData | null>(null);
+  const [safeAuth, setSafeAuth] = useState<SafeAuthKit<Web3AuthModalPack>>();
+  const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(
+    null
+  );
 
-    useEffect(() => {
-        const init = async () => {
-            try {
-                const web3auth = new Web3Auth({
-                    clientId,
-                    web3AuthNetwork: "testnet", // mainnet, aqua, celeste, cyan or testnet
-                    chainConfig: {
-                        chainNamespace: CHAIN_NAMESPACES.EIP155,
-                        chainId: "0x1",
-                        rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-                    },
-                });
-
-                setWeb3auth(web3auth);
-
-                await web3auth.initModal();
-
-                if (web3auth.provider) {
-                    setProvider(web3auth.provider);
-                };
-
-            } catch (error) {
-                console.error(error);
-            }
+  useEffect(() => {
+    const init = async () => {
+      try {
+        const options: Web3AuthOptions = {
+          clientId,
+          web3AuthNetwork: "mainnet",
+          chainConfig: {
+            chainNamespace: CHAIN_NAMESPACES.EIP155,
+            ...DEFAULT_CHAIN,
+          },
+          uiConfig: {
+            theme: "dark",
+            loginMethodsOrder: ["google", "facebook"],
+          },
         };
 
-        init();
-    }, []);
+        // https://web3auth.io/docs/sdk/web/modal/initialize#configuring-adapters
+        const modalConfig = {
+          [WALLET_ADAPTERS.TORUS_EVM]: {
+            label: "torus",
+            showOnModal: false,
+          },
+          [WALLET_ADAPTERS.METAMASK]: {
+            label: "metamask",
+            showOnDesktop: true,
+            showOnMobile: false,
+          },
+        };
 
-    const login = async () => {
-        if (!web3auth) {
-            uiConsole("web3auth not initialized yet");
-            return;
-        }
-        const web3authProvider = await web3auth.connect();
-        setProvider(web3authProvider);
+        const openloginAdapter = new OpenloginAdapter({
+          loginSettings: {
+            mfaLevel: "none",
+          },
+          adapterSettings: {
+            uxMode: "popup",
+            whiteLabel: {
+              name: "Safe",
+            },
+          },
+        });
+
+        const pack = new Web3AuthModalPack(
+          options,
+          [openloginAdapter],
+          modalConfig
+        );
+
+        const safeAuthKit = await SafeAuthKit.init(pack, {
+          txServiceUrl: "https://safe-transaction-goerli.safe.global",
+        });
+
+        safeAuthKit.subscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler);
+
+        safeAuthKit.subscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler);
+
+        setSafeAuth(safeAuthKit);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    const authenticateUser = async () => {
-        if (!web3auth) {
-            uiConsole("web3auth not initialized yet");
-            return;
-        }
-        const idToken = await web3auth.authenticateUser();
-        uiConsole(idToken);
-    };
+    init();
 
-    const getUserInfo = async () => {
-        if (!web3auth) {
-            uiConsole("web3auth not initialized yet");
-            return;
-        }
-        const user = await web3auth.getUserInfo();
-        uiConsole(user);
+    return () => {
+      if (safeAuth) {
+        safeAuth.unsubscribe(ADAPTER_EVENTS.CONNECTED, connectedHandler);
+        safeAuth.unsubscribe(ADAPTER_EVENTS.DISCONNECTED, disconnectedHandler);
+      }
     };
+  }, []);
 
-    const logout = async () => {
-        if (!web3auth) {
-            uiConsole("web3auth not initialized yet");
-            return;
-        }
-        await web3auth.logout();
-        setProvider(null);
-    };
+  const login = async () => {
+    if (!safeAuth) return;
 
-    const getChainId = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const chainId = await rpc.getChainId();
-        uiConsole(chainId);
-    };
-    const getAccounts = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const address = await rpc.getAccounts();
-        uiConsole(address);
-    };
+    const response = await safeAuth.signIn();
+    console.log("SIGN IN RESPONSE: ", response);
 
-    const getBalance = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const balance = await rpc.getBalance();
-        uiConsole(balance);
-    };
+    setSafeAuthSignInResponse(response);
+    // const providerEth = new ethers.providers.JsonRpcProvider( DEFAULT_CHAIN.rpcTarget)
+    console.log("chain ", DEFAULT_CHAIN);
+    setProvider(safeAuth.getProvider() as SafeEventEmitterProvider);
+    // setProvider(providerEth)
+    console.log("PROVIDER: ", provider);
+    // onLoggedIn?.(safeAuth)
+  };
 
-    const sendTransaction = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const receipt = await rpc.sendTransaction();
-        uiConsole(receipt);
-    };
+  const logout = async () => {
+    if (!safeAuth) return;
 
-    const signMessage = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const signedMessage = await rpc.signMessage();
-        uiConsole(signedMessage);
-    };
+    await safeAuth.signOut();
 
-    const getPrivateKey = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const rpc = new RPC(provider);
-        const privateKey = await rpc.getPrivateKey();
-        uiConsole(privateKey);
-    };
+    setProvider(null);
+    setSafeAuthSignInResponse(null);
+  };
 
-    function uiConsole(...args: any[]): void {
-        const el = document.querySelector("#console>p");
-        if (el) {
-            el.innerHTML = JSON.stringify(args || {}, null, 2);
-        }
+  const getChainId = async () => {
+    if (!provider) {
+      return;
     }
+    const rpc = new RPC(provider);
+    const chainId = await rpc.getChainId();
+    return chainId;
+  };
 
-    return {
-        login,
-        logout,
-        authenticateUser,
-        getUserInfo,
-        getChainId,
-        getAccounts,
-        getBalance,
-        sendTransaction,
-        signMessage,
-        getPrivateKey,
-        web3auth,
-        provider
+  const getAccounts = async () => {
+    if (!provider) {
+      return;
     }
+    const rpc = new RPC(provider);
+    const address = await rpc.getAccounts();
+    return address;
+  };
+
+  const getPrivateKey = async () => {
+    if (!provider) {
+      return;
+    }
+    const rpc = new RPC(provider);
+    const privateKey = await rpc.getPrivateKey();
+    return privateKey;
+  };
+
+  const getPublicAddress = () => {
+    return safeAuthSignInResponse?.eoa;
+  };
+
+  const getSafeAddress = () => {
+    if (safeAuthSignInResponse?.safes) {
+      return safeAuthSignInResponse.safes[0];
+    }
+    return undefined;
+  };
+
+  return {
+    login,
+    logout,
+    safeAuthSignInResponse,
+    provider,
+    getChainId,
+    getPrivateKey,
+    getAccounts,
+    getPublicAddress,
+    getSafeAddress,
+  };
 }

@@ -1,8 +1,9 @@
-![logo]()
+![WingWallet logo](https://drive.google.com/uc?export=view&id=1IsH9vsdLEzG65t22RZB5AaIOLkx1Dd1B)
 
-# <Project name>
+# WingWallet
 
 ## Summary
+Introducing our smart wallet - the ultimate solution for seamless crypto transactions! With our point-of-sale crypto payment app, users can easily make purchases using their crypto wallet. Plus, our customizable addons allow for extended capabilities such as posting transactions to Lenster and merchants converting received tokens. All designed with Safe Core SDK and Web3Auth for top-notch user experience.
 
 ## Problem
 In Web3, there are already a big number of people with crypto who want to use crypto as payment, but there are very few merchants who accept crypto as a form of payment.
@@ -10,8 +11,8 @@ In Web3, there are already a big number of people with crypto who want to use cr
 We are building a decentralized network of plugins/addons to extend capabilities of the smart wallet to give both sides the ability to do more with their payment. First off, we can easily onboard the merchant with social login with Google. Secondly, some of our addons make it easier to pay such as our QR payment module, NFT discount, and posting to Lens social network.
 
 
-### Architecture
-
+### Buyer and merchant flows
+![Buyer and merchant flows](https://drive.google.com/file/d/1Kdr0LNGVAFPrwmeipG-D_4qcpVk0kH-8/view?usp=share_link)
 
 ## User Flow
 The user has an existing wallet and would connect their external wallet with the app to pre-load it with crypto. The seller (merchant) doesn't have a Web3 wallet yet, so he/she would create a wallet through Web3 login. The wallet (EOA) that is created with social login would in turn create the safe. This safe would then help to conduct transactions with the buyer from seller.
@@ -32,43 +33,76 @@ Some thoughts for how the whole project can be built out further:
 - To create a fully decentralized L2 network of addons.
 
 ## Deployed contract
+### Goerli (chainID: 5)
 
-### Goerli
-
-| contract |                           contract address |
+| Contract |                           Contract address |
 | :------- | -----------------------------------------: |
-| Voting   | 0x2A1b3760d3AEcC8E6b8965404409596084664441 |
-| OFT      | 0xBcA9C6f43F2AE64682E92a8404732cC4C26c52FB |
+| Nike NFT    | 0x5b21d9f94e5f0627683f5e0d63bc5d69848b5dd3 |
+| Safe module | 0x6499fe8dcf7fa706075554a22d54ab007c5c166f |
 
-### Gnosis Chain
+### Gnosis Chain mainnet (chainID: 100)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x7268d5bc5AD0d3E0f333a481a306108A766b0A8C |
-| OFT         | 0xDd14C00Aa47b585c06d48F8FaCB6EaB9a20aCdDc |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+The verified smart contract for Gnosis Chain mainnet is:
+https://gnosisscan.io/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
-### Polygon
+### Polygon Mumbai (chainID: 80001)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x26D3Fe47c2948Ff67650dA41AD54cb615504F310 |
-| OFT         | 0xB9207fFEf813A97394a814098f37a11B9523D7Ae |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+The verified smart contract for Polygon Mumbai is:
+https://mumbai.polygonscan.com/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
-### Optimism
+### Optimism Goerli testnet (chainID: 420)
 
-| contract    |                           contract address |
+| Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| VoteRequest | 0x79b71573F5c73D89C767717D98693FDd7d6C942B |
-| OFT         | 0x88650b018f0F0981d8C136B25d7e12F1e2ffd264 |
+| Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
+| Safe module | 0x0957b85B61B0824a859Dd44FCBb3153FE6669371 |
+The verified smart contract for Optimism Goerli testnet is:
+https://goerli-optimism.etherscan.io/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
-## Transactions
+### Scroll Alpha testnet (chainID: 534353)
 
-Hyperlane: https://explorer.hyperlane.xyz/message/113809
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+| Safe module | 0x217b0580e5ceeef9e5966825ed523717ea779b5d |
+The verified smart contract for Scroll Alpha testnet is:
+https://blockscout.scroll.io/address/0x0957b85B61B0824a859Dd44FCBb3153FE6669371/contracts#address-tabs
+
+### Linea testnet (chainID: 59140)
+
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x0957b85B61B0824a859Dd44FCBb3153FE6669371 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+The verified smart contract for Linea testnet is:
+https://explorer.goerli.linea.build/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
+
+### Mantle testnet (chainID: 5001)
+
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+The verified smart contract for Mantle testnet is:
+https://explorer.testnet.mantle.xyz/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
 
 ## Others
 
 ### Demo movie
-https://www.youtube.com/watch?v=pDM4ci3XoFk&feature=youtu.be
+
 
 ### Demo site
-https://cross-chain-voting-frontend.vercel.app
+
+
+### How to run locally
+1. Go to the frontend folder
+2. npm install
+3. npm run dev

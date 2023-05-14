@@ -1,19 +1,75 @@
-import './App.css'
-import { Layout } from './Layout';
-import { HomePage } from './pages/Home';
-import { LoginPage } from './pages/Login';
-
-const clientId = import.meta.env.VITE_REACT_APP_WEB3_AUTH_CLIENT_ID
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./App.css";
+import { Layout } from "./Layout";
+import { useContext } from "react";
+import { WalletContext } from "./context/Wallet";
+import { Scanner } from "./pages/Scanner";
+import { Payment } from "./pages/Payment";
+import { SuccessTransactionForUser } from "./pages/SuccessTransactionForUser";
+import { SuccessTransactionForMerchant } from "./pages/SuccessTransactionForMerchant";
+import { Invoice } from "./pages/Invoice";
+import { WelcomePage } from "./pages/Welcome";
+import { AddOn } from "./pages/AddOn";
+import { AddOnDetail } from "./pages/AddOnDetail";
+import { CreateQRCode } from "./pages/CreateQRCode";
+import { HomePage } from "./pages/Home";
 
 function App() {
+  const { provider } = useContext(WalletContext);
 
-  return (
-    <Layout>
-      <HomePage />
-    </Layout>
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
+        {
+          path: "/addon",
+          element: <AddOn />,
+        },
+        {
+          path: "/addon/detail",
+          element: <AddOnDetail />,
+        },
+        {
+          path: "/scanner",
+          element: <Scanner />,
+        },
+        {
+          path: "/payment",
+          element: <Payment />,
+        },
+        {
+          path: "/invoice",
+          element: <Invoice />,
+        },
+        {
+          path: "/user/transaction_success",
+          element: <SuccessTransactionForUser />,
+        },
+        {
+          path: "/merchant/transaction_success",
+          element: <SuccessTransactionForMerchant />,
+        },
+        {
+          path: "/create_qrcode",
+          element: <CreateQRCode />,
+        },
+      ],
+    },
+  ]);
 
-    // <LoginPage clientId={clientId} />
-  );
+  function renderAuthenticatedFlow() {
+    return <RouterProvider router={router} />;
+  }
+
+  if (provider) {
+    return renderAuthenticatedFlow();
+  }
+  return <WelcomePage />;
 }
 
 export default App;
