@@ -1,8 +1,10 @@
 import Safe, { EthersAdapter } from "@safe-global/protocol-kit";
 import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 import { ethers } from "ethers";
+import { DEFAULT_CHAIN } from "./chains";
 
-export const sendTransaction = async (privKey: string, provider: any) => {
+export const sendTransaction = async (privKey: string) => {
+    const provider = new ethers.providers.JsonRpcProvider( DEFAULT_CHAIN.rpcTarget)
     const signer = new ethers.Wallet(privKey, provider)
 
     const ethAdapter = new EthersAdapter({
