@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-     address nft = 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898;
-        address discuntReceiver = address(0x5CFE9e2386150C655F1941DDe8978f862336A858);
-        uint discountPercentage = 10;
-        uint maxDiscountPerTx = 0.1 ether;
+
 
 import "../lib/forge-std/src/Script.sol";
 import "../src/NftDiscountModule.sol";
 import "../src/UndeadNFT.sol";
+
 contract DeployerScriptNFT is Script {
     function setUp() public {}
 
