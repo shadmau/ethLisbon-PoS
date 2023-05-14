@@ -1,16 +1,22 @@
 import { Equalizer, Home, Person, QrCode, Wallet } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   BottomNavigation,
   BottomNavigationAction,
   Button,
   Paper,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function Footer() {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
+  const navigationRoutes = ["/", "/activity", "/my-wallets", "/profile"];
+
+  function handleClickQRCode() {
+    navigate("/scan");
+  }
+
   return (
     <>
       <Paper
@@ -22,6 +28,7 @@ export function Footer() {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
+            navigate(navigationRoutes[newValue]);
           }}
         >
           <BottomNavigationAction label="Home" icon={<Home />} />
@@ -45,7 +52,7 @@ export function Footer() {
         <Button
           sx={{ width: "56px", height: "56px", borderRadius: "100%" }}
           variant="contained"
-          onClick={() => navigate("/scanner")}
+          onClick={handleClickQRCode}
         >
           <QrCode />
         </Button>

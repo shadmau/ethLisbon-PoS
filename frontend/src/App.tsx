@@ -10,9 +10,10 @@ import { Payment } from "./pages/Payment";
 import { SuccessTransactionForUser } from "./pages/SuccessTransactionForUser";
 import { SuccessTransactionForMerchant } from "./pages/SuccessTransactionForMerchant";
 import { Invoice } from "./pages/Invoice";
+import { WelcomePage } from "./pages/Welcome";
 
 function App() {
-  const { provider, login } = useContext(WalletContext);
+  const { provider } = useContext(WalletContext);
 
   const router = createBrowserRouter([
     {
@@ -54,8 +55,7 @@ function App() {
   if (provider) {
     return renderAuthenticatedFlow();
   }
-
-  return <LoginPage handleLogin={login} />;
+  return <WelcomePage />;
 }
 
 export default App;

@@ -46,6 +46,8 @@ Some thoughts for how the whole project can be built out further:
 | :---------- | -----------------------------------------: |
 | Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
 | Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+The verified smart contract for Gnosis Chain mainnet is:
+https://gnosisscan.io/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
 ### Polygon Mumbai (chainID: 80001)
 
@@ -53,13 +55,17 @@ Some thoughts for how the whole project can be built out further:
 | :---------- | -----------------------------------------: |
 | Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
 | Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+The verified smart contract for Polygon Mumbai is:
+https://mumbai.polygonscan.com/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
 ### Optimism Goerli testnet (chainID: 420)
 
 | Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
 | Nike NFT    | 0x0957b85b61b0824a859dd44fcbb3153fe6669371 |
-| Safe module | 0x80aa447d916aa168f8656196fa0bb2b2b84ad898 |
+| Safe module | 0x0957b85B61B0824a859Dd44FCBb3153FE6669371 |
+The verified smart contract for Optimism Goerli testnet is:
+https://goerli-optimism.etherscan.io/address/0x80aa447d916aa168f8656196fa0bb2b2b84ad898#code
 
 ### Scroll Alpha testnet (chainID: 534353)
 
@@ -67,6 +73,26 @@ Some thoughts for how the whole project can be built out further:
 | :---------- | -----------------------------------------: |
 | Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
 | Safe module | 0x217b0580e5ceeef9e5966825ed523717ea779b5d |
+The verified smart contract for Scroll Alpha testnet is:
+https://blockscout.scroll.io/address/0x0957b85B61B0824a859Dd44FCBb3153FE6669371/contracts#address-tabs
+
+### Linea testnet (chainID: 59140)
+
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x0957b85B61B0824a859Dd44FCBb3153FE6669371 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+The verified smart contract for Linea testnet is:
+https://explorer.goerli.linea.build/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
+
+### Mantle testnet (chainID: 5001)
+
+| Contract    |                           Contract address |
+| :---------- | -----------------------------------------: |
+| Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+The verified smart contract for Mantle testnet is:
+https://explorer.testnet.mantle.xyz/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
 
 ## Transactions
 
