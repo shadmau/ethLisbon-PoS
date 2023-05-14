@@ -133,6 +133,17 @@ export function useWeb3Auth(clientId: string) {
         return privateKey
     };
 
+    const getPublicAddress = () => {
+        return safeAuthSignInResponse?.eoa
+    }
+
+    const getSafeAddress = () => {
+        if (safeAuthSignInResponse?.safes) {
+            return safeAuthSignInResponse.safes[0]
+        }
+        return undefined
+    }
+
     return {
         login,
         logout,
@@ -141,5 +152,7 @@ export function useWeb3Auth(clientId: string) {
         getChainId,
         getPrivateKey,
         getAccounts,
+        getPublicAddress,
+        getSafeAddress
     }
 }
