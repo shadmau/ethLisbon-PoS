@@ -80,18 +80,19 @@ https://blockscout.scroll.io/address/0x0957b85B61B0824a859Dd44FCBb3153FE6669371/
 
 | Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| Nike NFT    | TBD |
-| Safe module | TBD |
+| Nike NFT    | 0x0957b85B61B0824a859Dd44FCBb3153FE6669371 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
 The verified smart contract for Linea testnet is:
+https://explorer.goerli.linea.build/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
 
 ### Mantle testnet (chainID: 5001)
 
 | Contract    |                           Contract address |
 | :---------- | -----------------------------------------: |
-| Nike NFT    | TBD |
-| Safe module | TBD |
+| Nike NFT    | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
+| Safe module | 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 |
 The verified smart contract for Mantle testnet is:
-
+https://explorer.testnet.mantle.xyz/address/0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898/contracts#address-tabs
 
 ## Transactions
 
