@@ -13,6 +13,7 @@ import { Invoice } from "./pages/Invoice";
 import { WelcomePage } from "./pages/Welcome";
 import { AddOn } from "./pages/AddOn";
 import { AddOnDetail } from "./pages/AddOnDetail";
+import { CreateQRCode } from "./pages/CreateQRCode";
 
 function App() {
   const { provider } = useContext(WalletContext);
@@ -53,6 +54,10 @@ function App() {
         {
           path: "/merchant/transaction_success",
           element: <SuccessTransactionForMerchant />,
+        },
+        {
+          path: "/create_qrcode",
+          element: <CreateQRCode />,
         },
       ],
     },

@@ -3,11 +3,15 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import { CreateInvoice } from "../components/Invoice/CreateInvoice";
 import { ConfirmInvoice } from "../components/Invoice/ConfirmInvoice";
+import { useNavigate } from "react-router-dom";
 
 export function Invoice() {
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const navigate = useNavigate();
 
-  const createInvoice = () => {};
+  const createInvoice = () => {
+    navigate("/create_qrcode");
+  };
 
   return (
     <>

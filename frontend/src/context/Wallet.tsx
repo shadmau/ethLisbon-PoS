@@ -17,7 +17,8 @@ interface WalletContextProps {
   children: ReactNode;
 }
 
-const clientId = import.meta.env.VITE_REACT_APP_WEB3_AUTH_CLIENT_ID
+const clientId =
+  "BHfw1_06o5qSzwHyB1uLHaaKth-pEYa26ukwFC2ESPPP8iotJ8DsF-HRHfAXTDpNx7NNIjXN3lnwBUoiZhu794A";
 
 export const WalletContext = createContext({} as WalletContextData);
 

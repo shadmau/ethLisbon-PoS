@@ -49,17 +49,17 @@ export default defineConfig({
     esbuildOptions: {
       // Node.js global to browser globalThis
       define: {
-          global: 'globalThis'
+        global: 'globalThis'
       },
       // Enable esbuild polyfill plugins
       plugins: [
-          NodeGlobalsPolyfillPlugin({
-              process: true,
-              buffer: true
-          }),
-          NodeModulesPolyfillPlugin()
+        NodeGlobalsPolyfillPlugin({
+          process: true,
+          buffer: true
+        }),
+        NodeModulesPolyfillPlugin()
       ]
-  }
+    }
   },
   build: {
     target: "es2020",
@@ -72,4 +72,8 @@ export default defineConfig({
       ],
     },
   },
+
+  server: {
+    host: "0.0.0.0"
+  }
 });
