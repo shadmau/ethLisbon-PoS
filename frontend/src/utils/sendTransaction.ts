@@ -3,7 +3,7 @@ import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 import { ethers } from "ethers";
 import { DEFAULT_CHAIN } from "./chains";
 
-export const sendTransaction = async (privKey: string) => {
+export const sendTransaction = async (privKey: string, safeAddress: string) => {
     const provider = new ethers.providers.JsonRpcProvider( DEFAULT_CHAIN.rpcTarget)
     const signer = new ethers.Wallet(privKey, provider)
 
@@ -14,11 +14,11 @@ export const sendTransaction = async (privKey: string) => {
 
     const safeSdk = await Safe.create({
         ethAdapter,
-        safeAddress: "0x676bDe3B3c48E33E2f57Dc8111e73Da117a9837f",
+        safeAddress,
     });
 
     const safeTransactionData: SafeTransactionDataPartial = {
-        to: "0x5CFE9e2386150C655F1941DDe8978f862336A858",
+        to: "0x3b6e4a4949F04595FCD97b8A29dee609FE87F397",
         value: ethers.utils.parseUnits("0.001", "ether").toString(),
         data: "0x",
     };

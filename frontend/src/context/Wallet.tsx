@@ -11,6 +11,7 @@ interface WalletContextData {
   logout: () => Promise<void>;
   isMerchant: boolean;
   handleSetUserAsMerchant: () => void;
+  safeAddress: string | undefined
 }
 
 interface WalletContextProps {
@@ -23,13 +24,14 @@ const clientId =
 export const WalletContext = createContext({} as WalletContextData);
 
 export function WalletProvider({ children }: WalletContextProps) {
-  const { login, logout, provider, getAccounts, getPrivateKey, getChainId } =
+  const { login, logout, provider, getAccounts, getPrivateKey, getChainId, getSafeAddress, getPublicAddress } =
     useWeb3Auth(clientId);
   const [accounts, setAccounts] = useState<any>();
   const [privateKey, setPrivateKey] = useState<any>();
   const [chainId, setChainId] = useState<any>();
   const [isMerchant, setIsMerchant] = useState(false);
   const [providerData, setProviderData] = useState<SafeEventEmitterProvider | null>(provider)
+  const [safeAddress, setSafeAddress] = useState<string>()
 
   async function updateData() {
     const getAccountsData = await getAccounts();
@@ -39,6 +41,7 @@ export function WalletProvider({ children }: WalletContextProps) {
     setAccounts(getAccountsData);
     setPrivateKey(getPrivateKeyData);
     setChainId(getChainIdData);
+    setSafeAddress(getSafeAddress())
   }
 
   function handleSetUserAsMerchant() {
@@ -60,6 +63,7 @@ export function WalletProvider({ children }: WalletContextProps) {
         chainId,
         isMerchant,
         handleSetUserAsMerchant,
+        safeAddress,
       }}
     >
       {children}
