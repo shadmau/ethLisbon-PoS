@@ -1,0 +1,23 @@
+$font-inter: "Inter";
+
+.info {
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+
+  .info_text {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    /* identical to box height, or 20px */
+
+    /* Greyscale / Grey 900 */
+
+    color: #111827;
+
+    text-align: left;
+  }
+}

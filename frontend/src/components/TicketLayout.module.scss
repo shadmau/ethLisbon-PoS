@@ -1,0 +1,33 @@
+.ticket {
+  background: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 32px;
+  margin: 24px;
+  position: relative;
+
+  .circle {
+    position: absolute;
+    width: 88.13px;
+    height: 88.13px;
+    border-radius: 50%;
+    // top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(51, 51, 51, 0.3);
+
+    .icon_circle {
+      position: absolute;
+      width: 62.34px;
+      height: 62.34px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #374151;
+    }
+  }
+}
+
+.space_32px {
+  height: 32px;
+}

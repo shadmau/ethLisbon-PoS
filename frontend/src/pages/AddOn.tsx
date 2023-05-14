@@ -98,7 +98,7 @@ export function AddOn() {
               primary="Sponsored transaction"
               secondary="Valid until・Aug, 2023"
             />
-            <span>0 GAS</span>
+            <span></span>
           </ListItem>
         </List>
       </Container>

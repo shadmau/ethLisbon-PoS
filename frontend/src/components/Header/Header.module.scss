@@ -1,0 +1,24 @@
+.header {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    /* identical to box height, or 28px */
+
+    text-align: center;
+
+    /* Other Colors / White */
+
+    color: #ffffff;
+  }
+
+  span {
+    color: #111827;
+  }
+}
