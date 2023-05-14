@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Home.module.scss'
 import { Typography } from '@mui/material'
+import { WalletContext } from '../context/Wallet'
 
-interface HomePageProps {
-    handleLogout: () => Promise<void>
-}
+export function HomePage({ ...props }) {
 
-export function HomePage({ handleLogout }: HomePageProps) {
-    const loggedInView = (
-        <>
+    const { accounts, logout } = useContext(WalletContext)
+
+    console.log('accounts ', accounts)
+
+    return (
+        <div className={styles.container} {...props}>
+            <Typography variant='h3' component='h1'>User.name</Typography>
             <div className="flex-container">
                 <div>
-                    <button onClick={handleLogout} className="card">
+                    <button onClick={logout} className="card">
                         Log Out
                     </button>
                 </div>
@@ -20,13 +23,6 @@ export function HomePage({ handleLogout }: HomePageProps) {
             <div id="console" style={{ whiteSpace: "pre-line" }}>
                 <p style={{ whiteSpace: "pre-line" }}>Logged in Successfully!</p>
             </div>
-        </>
-    );
-
-    return (
-        <div className={styles.container}>
-            <Typography variant='h3' component='h1'>User.name</Typography>
-            {loggedInView}
         </div>
     )
 }
