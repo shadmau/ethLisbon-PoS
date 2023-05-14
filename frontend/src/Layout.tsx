@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Layout.module.scss'
-import { Footer } from './components/Footer/Footer'
+import { Footer } from './components/Footer'
 import { Outlet } from 'react-router-dom'
 
 export function Layout({ ...props }) {
