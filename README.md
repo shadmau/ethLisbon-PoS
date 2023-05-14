@@ -1,4 +1,4 @@
-![https://drive.google.com/file/d/1IsH9vsdLEzG65t22RZB5AaIOLkx1Dd1B/view?usp=share_link]()
+![WingWallet logo](https://drive.google.com/uc?export=view&id=1IsH9vsdLEzG65t22RZB5AaIOLkx1Dd1B)
 
 # WingWallet
 
