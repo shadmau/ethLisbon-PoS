@@ -25,45 +25,14 @@
       "isFixedGasLimit": false
     }
   ],
-  "receipts": [
-    {
-      "transactionHash": "0xaa636194b101235bc41a69a8f6500bae1ef0f0a70ee4304f4e7949346d9aec0c",
-      "transactionIndex": "0x2d",
-      "blockHash": "0xceb3f78efaca040e1848b149b6092dce2fc179649e85f6d1cacf55bec303db43",
-      "blockNumber": "0x894078",
-      "from": "0xd9CdFbBb0dCA90F1367673337F441EcF09172b7B",
-      "to": null,
-      "cumulativeGasUsed": "0x8e3c95",
-      "gasUsed": "0xbfa5d",
-      "contractAddress": "0x217B0580E5CeEef9e5966825ED523717eA779b5d",
-      "logs": [
-        {
-          "address": "0x217B0580E5CeEef9e5966825ED523717eA779b5d",
-          "topics": [
-            "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x000000000000000000000000d9cdfbbb0dca90f1367673337f441ecf09172b7b"
-          ],
-          "data": "0x",
-          "blockHash": "0xceb3f78efaca040e1848b149b6092dce2fc179649e85f6d1cacf55bec303db43",
-          "blockNumber": "0x894078",
-          "transactionHash": "0xaa636194b101235bc41a69a8f6500bae1ef0f0a70ee4304f4e7949346d9aec0c",
-          "transactionIndex": "0x2d",
-          "logIndex": "0x6e",
-          "removed": false
-        }
-      ],
-      "status": "0x1",
-      "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000020000000000000000400000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000800000000000000000000000000000000000020004000000000000000000000000000000000000000000000000000000000002000",
-      "type": "0x0",
-      "effectiveGasPrice": "0x5f5e0d1"
-    }
-  ],
+  "receipts": [],
   "libraries": [],
-  "pending": [],
+  "pending": [
+    "0xaa636194b101235bc41a69a8f6500bae1ef0f0a70ee4304f4e7949346d9aec0c"
+  ],
   "path": "/home/madu/development/ethLisbon-PoS/contracts/nft-discount-module/broadcast/DeployScript.sol/5/run-latest.json",
   "returns": {},
-  "timestamp": 1684013606,
+  "timestamp": 1684013593,
   "chain": 5,
   "multi": false,
   "commit": "59f45fa"

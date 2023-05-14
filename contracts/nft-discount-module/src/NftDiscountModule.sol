@@ -1,6 +1,4 @@
-//Safe address: gor:0x676bDe3B3c48E33E2f57Dc8111e73Da117a9837f
-// 
-// SPDX-License-Identifier: UNLICENSED
+ // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
 
