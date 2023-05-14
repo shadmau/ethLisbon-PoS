@@ -7,10 +7,7 @@ import Ethereum from "../assets/ethereum-logo.png";
 
 export function HomePage({ ...props }) {
   const [address, setAddress] = useState("");
-  const { accounts, logout } = useContext(WalletContext);
-
-  console.log("accounts ", accounts);
-
+  const { accounts, logout, isMerchant } = useContext(WalletContext);
   useEffect(() => {
     if (accounts) {
       setAddress(accounts.address);

@@ -10,7 +10,7 @@ In Web3, there are already a big number of people with crypto who want to use cr
 We are building a decentralized network of plugins/addons to extend capabilities of the smart wallet to give both sides the ability to do more with their payment. First off, we can easily onboard the merchant with social login with Google. Secondly, some of our addons make it easier to pay such as our QR payment module, NFT discount, and posting to Lens social network.
 
 
-### Architecture
+### Buyer and merchant flows
 
 
 ## User Flow
@@ -105,3 +105,8 @@ https://www.youtube.com/watch?v=pDM4ci3XoFk&feature=youtu.be
 
 ### Demo site
 https://cross-chain-voting-frontend.vercel.app
+
+### How to run locally
+1. Go to the frontend folder
+2. npm install
+3. npm run dev
