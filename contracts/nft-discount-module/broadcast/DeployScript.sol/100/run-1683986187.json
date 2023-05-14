@@ -1,6 +1,6 @@
 {
   "transactions": [
-    {
+    {forge verify-contract 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 NftDiscountModule --verifier-url https://api.polygonscan.com/api/ W5BU1XMB1IBYCHH5GFTC8E56NUWPTKNRQI --chain 80001
       "hash": "0xd89419cf92f5c6e1f42621dabdf79441ff421b83cb6a1fded301f023d7aec316",
       "transactionType": "CREATE",
       "contractName": "NftDiscountModule",

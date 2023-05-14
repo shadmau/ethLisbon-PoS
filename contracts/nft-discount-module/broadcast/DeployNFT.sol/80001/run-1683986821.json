@@ -1,6 +1,8 @@
 {
   "transactions": [
     {
+      forge verify-contract 0x80Aa447D916aa168F8656196fa0Bb2b2B84Ad898 src/UndeadNFT.sol:UndeadNFT ---chain polygon W5BU1XMB1IBYCHH5GFTC8E56NUWPTKNRQI
+
       "hash": "0x4abc95604f7502a7c11fa6d041527e8d9dd1ac7964a8ca52f8bfb11b1a12b1df",
       "transactionType": "CREATE",
       "contractName": "UndeadNFT",
