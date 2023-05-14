@@ -5,6 +5,7 @@ import { SafeAuthKit, Web3AuthModalPack, SafeAuthSignInData, Web3AuthEventListen
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider, WALLET_ADAPTERS } from '@web3auth/base';
 import RPC from "../web3RPC";
 import { DEFAULT_CHAIN, chainsList } from "../utils/chains"
+import { ethers } from "ethers";
 
 const connectedHandler: Web3AuthEventListener = (data) => console.log('CONNECTED', data)
 const disconnectedHandler: Web3AuthEventListener = (data) => console.log('DISCONNECTED', data)
@@ -48,7 +49,7 @@ export function useWeb3Auth(clientId: string) {
 
                 const openloginAdapter = new OpenloginAdapter({
                     loginSettings: {
-                        mfaLevel: 'mandatory'
+                        mfaLevel: 'none'
                     },
                     adapterSettings: {
                         uxMode: 'popup',
@@ -92,7 +93,10 @@ export function useWeb3Auth(clientId: string) {
         console.log('SIGN IN RESPONSE: ', response)
 
         setSafeAuthSignInResponse(response)
+        // const providerEth = new ethers.providers.JsonRpcProvider( DEFAULT_CHAIN.rpcTarget)
+        console.log('chain ', DEFAULT_CHAIN)
         setProvider(safeAuth.getProvider() as SafeEventEmitterProvider)
+        // setProvider(providerEth)
         console.log('PROVIDER: ', provider)
         // onLoggedIn?.(safeAuth)
     }

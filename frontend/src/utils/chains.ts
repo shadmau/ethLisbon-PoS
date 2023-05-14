@@ -26,4 +26,4 @@ export const chainsList: ChainOptions = {
     },
 }
 
-export const DEFAULT_CHAIN = chainsList['goerli']
+export const DEFAULT_CHAIN = chainsList['gnosis']

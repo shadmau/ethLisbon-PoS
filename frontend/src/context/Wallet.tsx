@@ -29,11 +29,13 @@ export function WalletProvider({ children }: WalletContextProps) {
   const [privateKey, setPrivateKey] = useState<any>();
   const [chainId, setChainId] = useState<any>();
   const [isMerchant, setIsMerchant] = useState(false);
+  const [providerData, setProviderData] = useState<SafeEventEmitterProvider | null>(provider)
 
   async function updateData() {
     const getAccountsData = await getAccounts();
     const getPrivateKeyData = await getPrivateKey();
     const getChainIdData = await getChainId();
+    setProviderData(provider)
     setAccounts(getAccountsData);
     setPrivateKey(getPrivateKeyData);
     setChainId(getChainIdData);
@@ -52,7 +54,7 @@ export function WalletProvider({ children }: WalletContextProps) {
       value={{
         login,
         logout,
-        provider,
+        provider: providerData,
         accounts,
         privateKey,
         chainId,
